@@ -1,0 +1,8 @@
+{
+  "name": "Remix Pip\u0027s Midnight Observatory",
+  "description": "Small baby. Big dreams. An interactive storybook observatory portfolio for Pip, Junior Dream Engineer at the Midnight Nursery.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

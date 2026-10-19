@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="100%" height="100%">
+  <defs>
+    <linearGradient id="nightSky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0b0d1b" />
+      <stop offset="50%" stop-color="#181836" />
+      <stop offset="100%" stop-color="#2a2356" />
+    </linearGradient>
+    <radialGradient id="moonGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9" />
+      <stop offset="40%" stop-color="#fef08a" stop-opacity="0.5" />
+      <stop offset="100%" stop-color="#fde047" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="curtainGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3b2b52" />
+      <stop offset="50%" stop-color="#60497e" />
+      <stop offset="100%" stop-color="#2c1e40" />
+    </linearGradient>
+    <linearGradient id="frameGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4a3b32" />
+      <stop offset="100%" stop-color="#231a15" />
+    </linearGradient>
+  </defs>
+
+  <!-- Outside Night Sky -->
+  <rect width="600" height="600" rx="32" fill="url(#nightSky)" />
+
+  <!-- Stars and Constellations -->
+  <g fill="#ffffff">
+    <circle cx="80" cy="120" r="2.5" opacity="0.9" />
+    <circle cx="140" cy="90" r="1.5" opacity="0.7" />
+    <circle cx="210" cy="150" r="3" opacity="0.95" />
+    <circle cx="290" cy="80" r="2" opacity="0.8" />
+    <circle cx="380" cy="130" r="2.5" opacity="0.85" />
+    <circle cx="450" cy="90" r="3.5" opacity="1" />
+    <circle cx="510" cy="160" r="1.5" opacity="0.6" />
+    <circle cx="160" cy="220" r="2" opacity="0.8" />
+    <circle cx="240" cy="280" r="1.5" opacity="0.7" />
+    <circle cx="360" cy="250" r="2" opacity="0.9" />
+    <circle cx="420" cy="200" r="3" opacity="0.8" />
+  </g>
+  
+  <!-- Big Dipper / Constellation lines -->
+  <path d="M 80 120 L 140 90 L 210 150 L 290 80 L 380 130" stroke="#fef08a" stroke-width="1" stroke-dasharray="3,3" opacity="0.4" fill="none" />
+
+  <!-- Crescent Moon with Glow -->
+  <circle cx="440" cy="180" r="70" fill="url(#moonGlow)" />
+  <path d="M 440 140 A 45 45 0 1 0 475 220 A 38 38 0 1 1 440 140 Z" fill="#fef9c3" />
+
+  <!-- Distant sleepy cloud outside -->
+  <path d="M 120 320 Q 160 300 210 310 Q 250 290 300 310 Q 340 330 320 350 L 100 350 Z" fill="#6366f1" opacity="0.25" />
+
+  <!-- Window Frame Silhouette -->
+  <!-- Outer sill & arch -->
+  <rect x="70" y="50" width="460" height="480" rx="20" fill="none" stroke="url(#frameGrad)" stroke-width="26" />
+  <!-- Center Vertical Divider -->
+  <line x1="300" y1="50" x2="300" y2="530" stroke="url(#frameGrad)" stroke-width="16" />
+  <!-- Center Horizontal Divider -->
+  <line x1="70" y1="280" x2="530" y2="280" stroke="url(#frameGrad)" stroke-width="16" />
+  <!-- Window Sill Ledge -->
+  <rect x="40" y="510" width="520" height="30" rx="8" fill="#584234" />
+
+  <!-- Draped Cozy Nursery Curtains -->
+  <path d="M 50 50 Q 140 180 80 400 Q 120 480 140 520 L 50 520 Z" fill="url(#curtainGrad)" opacity="0.95" />
+  <path d="M 550 50 Q 460 180 520 400 Q 480 480 460 520 L 550 520 Z" fill="url(#curtainGrad)" opacity="0.95" />
+  
+  <!-- Tiny Nursery Star Pendant hanging from sill -->
+  <line x1="300" y1="50" x2="300" y2="120" stroke="#fde047" stroke-width="1.5" />
+  <polygon points="300,115 304,125 315,126 307,133 309,144 300,138 291,144 293,133 285,126 296,125" fill="#facc15" />
+</svg>

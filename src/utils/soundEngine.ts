@@ -199,6 +199,11 @@ class SoundEngine {
   public playLullabyPattern(trackName: string) {
     this.stopLullaby();
     this.isLullabyPlaying = true;
+    this.isSoundEnabled = true;
+    const ctx = this.getContext();
+    if (ctx && ctx.state === 'suspended') {
+      ctx.resume().catch(() => {});
+    }
 
     // Define peaceful scale notes
     const patterns: Record<string, number[]> = {
@@ -256,6 +261,86 @@ class SoundEngine {
     }
     this.activeNotesTimeouts.forEach(t => clearTimeout(t));
     this.activeNotesTimeouts = [];
+  }
+
+  // Ambient soundscape generators
+  private ambientGain: GainNode | null = null;
+  private ambientSource: AudioNode | null = null;
+  public isAmbiencePlaying: boolean = false;
+
+  public toggleAmbience(type: 'rain' | 'wind' | 'stardust' = 'stardust') {
+    if (this.isAmbiencePlaying) {
+      this.stopAmbience();
+      return false;
+    } else {
+      this.startAmbience(type);
+      return true;
+    }
+  }
+
+  public startAmbience(type: 'rain' | 'wind' | 'stardust' = 'stardust') {
+    this.stopAmbience();
+    if (!this.isSoundEnabled) return;
+    try {
+      const ctx = this.getContext();
+      if (!ctx) return;
+
+      const bufferSize = ctx.sampleRate * 2;
+      const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+      const data = buffer.getChannelData(0);
+
+      // Generate soft pink/brown noise
+      let b0 = 0, b1 = 0, b2 = 0;
+      for (let i = 0; i < bufferSize; i++) {
+        const white = Math.random() * 2 - 1;
+        b0 = 0.99 * b0 + white * 0.05;
+        b1 = 0.95 * b1 + white * 0.05;
+        b2 = 0.85 * b2 + white * 0.05;
+        data[i] = (b0 + b1 + b2) * (type === 'rain' ? 0.08 : 0.04);
+      }
+
+      const noise = ctx.createBufferSource();
+      noise.buffer = buffer;
+      noise.loop = true;
+
+      const filter = ctx.createBiquadFilter();
+      filter.type = type === 'rain' ? 'lowpass' : 'bandpass';
+      filter.frequency.setValueAtTime(type === 'rain' ? 600 : 380, ctx.currentTime);
+      filter.Q.setValueAtTime(1.5, ctx.currentTime);
+
+      const gain = ctx.createGain();
+      gain.gain.setValueAtTime(0.001, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.03, ctx.currentTime + 1.5);
+
+      noise.connect(filter);
+      filter.connect(gain);
+      gain.connect(ctx.destination);
+
+      noise.start();
+      this.ambientSource = noise;
+      this.ambientGain = gain;
+      this.isAmbiencePlaying = true;
+    } catch {
+      // Ignore
+    }
+  }
+
+  public stopAmbience() {
+    try {
+      if (this.ambientGain && this.ctx) {
+        this.ambientGain.gain.exponentialRampToValueAtTime(0.0001, this.ctx.currentTime + 0.5);
+      }
+      setTimeout(() => {
+        if (this.ambientSource) {
+          (this.ambientSource as AudioBufferSourceNode).stop();
+          this.ambientSource.disconnect();
+          this.ambientSource = null;
+        }
+      }, 500);
+      this.isAmbiencePlaying = false;
+    } catch {
+      // Ignore
+    }
   }
 }
 

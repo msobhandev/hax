@@ -7,6 +7,8 @@ export interface LullabyTrack {
   description: string;
   mood: string;
   stars: number;
+  artwork?: string;
+  audioUrl?: string;
 }
 
 export interface LanternItem {

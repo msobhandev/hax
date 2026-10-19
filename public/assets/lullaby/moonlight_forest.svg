@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="100%" height="100%">
+  <defs>
+    <linearGradient id="forestSky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#020617" />
+      <stop offset="50%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+    <radialGradient id="fullMoon" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="1" />
+      <stop offset="40%" stop-color="#e2e8f0" stop-opacity="0.9" />
+      <stop offset="70%" stop-color="#94a3b8" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#38bdf8" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="fogGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+
+  <rect width="600" height="600" rx="32" fill="url(#forestSky)" />
+
+  <!-- Massive Silver Moon -->
+  <circle cx="300" cy="190" r="130" fill="url(#fullMoon)" />
+  <circle cx="300" cy="190" r="65" fill="#f8fafc" />
+  <!-- Moon craters -->
+  <circle cx="280" cy="170" r="12" fill="#cbd5e1" opacity="0.6" />
+  <circle cx="320" cy="210" r="16" fill="#cbd5e1" opacity="0.5" />
+  <circle cx="310" cy="160" r="9" fill="#cbd5e1" opacity="0.4" />
+
+  <!-- Distant Foggy Trees Layer 1 -->
+  <path d="M-20 600 L-20 380 L30 320 L70 390 L120 310 L170 370 L230 290 L280 370 L340 300 L400 370 L460 310 L510 370 L570 320 L620 380 L620 600 Z" fill="#1e293b" opacity="0.7" />
+
+  <!-- Midnight Forest Mist -->
+  <rect x="0" y="360" width="600" height="120" fill="url(#fogGrad)" />
+
+  <!-- Middle Tree Silhouettes -->
+  <path d="M0 600 L0 440 L40 370 L80 430 L130 350 L180 440 L240 360 L290 430 L350 340 L410 430 L470 360 L520 440 L570 370 L600 420 L600 600 Z" fill="#0f172a" />
+
+  <!-- Foreground Huge Ancient Pines -->
+  <!-- Left Tree -->
+  <polygon points="100,200 40,320 80,320 20,440 70,440 0,550 90,550 90,600 110,600 110,550 190,550 130,440 170,440 120,320 150,320" fill="#030712" />
+  <!-- Right Tree -->
+  <polygon points="490,180 440,290 470,290 410,410 450,410 390,530 480,530 480,600 500,600 500,530 580,530 530,410 570,410 520,290 550,290" fill="#030712" />
+
+  <!-- Sleeping Forest Ground -->
+  <ellipse cx="300" cy="580" rx="350" ry="60" fill="#020617" />
+
+  <!-- Glowing Fireflies floating in the woods -->
+  <g fill="#a7f3d0">
+    <circle cx="160" cy="460" r="4" filter="drop-shadow(0 0 6px #34d399)" />
+    <circle cx="230" cy="500" r="3" filter="drop-shadow(0 0 5px #34d399)" />
+    <circle cx="340" cy="480" r="4.5" filter="drop-shadow(0 0 8px #6ee7b7)" />
+    <circle cx="420" cy="520" r="3" filter="drop-shadow(0 0 5px #34d399)" />
+    <circle cx="280" cy="440" r="2.5" filter="drop-shadow(0 0 4px #34d399)" />
+    <circle cx="380" cy="420" r="3.5" filter="drop-shadow(0 0 6px #6ee7b7)" />
+  </g>
+</svg>

@@ -84,6 +84,7 @@ export default function App() {
 
   const handleStarClick = () => {
     sound.playSparkle();
+    rewardStardust(10); // Reward stardust on star click
     const nextCount = easterEggClicks + 1;
     setEasterEggClicks(nextCount);
     if (nextCount >= 5) {
@@ -139,6 +140,8 @@ export default function App() {
         toggleSound={toggleSound}
         onStarClick={handleStarClick}
         easterEggClicks={easterEggClicks}
+        stardustCount={stardustCount}
+        rewardStardust={rewardStardust}
       />
 
       {/* Main Content Area */}
